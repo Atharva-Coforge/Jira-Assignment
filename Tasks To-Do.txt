@@ -40,3 +40,8 @@ Getting an existing ticket succeeds
 Getting a nonexistent ticket returns 404
 Updating a ticket changes the persisted record
 Deleting a ticket removes the record
+
+
+
+Current state of the code:
+- Get all tickets not working

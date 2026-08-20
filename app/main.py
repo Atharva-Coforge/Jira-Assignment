@@ -6,7 +6,7 @@ from app.database import Base, engine, get_db
 
 Base.metadata.create_all(bind=engine)
 
-app = FastAPI(title="Broken Task API")
+app = FastAPI(title="Ticket Management API")
 
 
 @app.get("/")
@@ -16,29 +16,20 @@ def root():
 @app.post("/tickets", response_model=schemas.TicketResponse, status_code=status.HTTP_201_CREATED)
 def create_ticket(ticket: schemas.TicketCreate, db: Session = Depends(get_db)):
     new_ticket = models.Ticket(
-        id = ticket.id,
         title = ticket.title,
         description = ticket.description,
         priority = ticket.priority,
         status = ticket.status,
-        created_at = ticket.created_at,
     )
-
-    if new_ticket is None:
-        raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND,
-            detail="Task not found",
-        )
 
     db.add(new_ticket)
     db.commit()
     db.refresh(new_ticket)
     return new_ticket
 
-@app.get("/tickets", response_model=list[schemas.TicketResponse])
+@app.get("/tickets")
 def get_all_tickets(db: Session = Depends(get_db)):
-    tickets = db.query(models.Ticket).all()
-    return tickets
+    return db.query(models.Ticket).all()
 
 @app.get("/tickets/{ticket_id}", response_model=schemas.TicketResponse)
 def get_ticket_by_id(ticket_id: int, db: Session = Depends(get_db)):
@@ -64,7 +55,8 @@ def update_ticket(ticket_id: int, ticket: schemas.TicketUpdate, db: Session = De
 
     myticket.title = ticket.title
     myticket.description = ticket.description
-    myticket.completed = ticket.completed
+    myticket.priority = ticket.priority
+    myticket.status = ticket.status
 
     db.commit()
     db.refresh(myticket)
