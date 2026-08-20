@@ -1,0 +1,42 @@
+Need to create a full stack python app to allow the users to create, view, update and delete their support tickets.
+
+Every ticket must have:
+- id
+- title
+- description
+- priority
+- status
+- created_at 
+
+Valid Priorities are:
+- high
+- medium
+- low
+
+Valid Statues are:
+- open
+- in_progress
+- closed
+
+- Decide the architecture. 
+- Requirements
+
+
+Unit tests:
+- Check if the tickets are getting created properly. 
+- Check if the tickets are updated properly. 
+- Check if we can fetch all the tickets properly. 
+- Check if we can delete the tickets properly.
+- Check what happens when we pass missing values to create a ticket
+- Check what happens when you do not send ID to update tickets
+- Check what happens when you do not send ID to delete tickets
+
+
+
+At minimum, test the following behaviors:
+Creating a valid ticket succeeds
+Invalid ticket input is rejected
+Getting an existing ticket succeeds
+Getting a nonexistent ticket returns 404
+Updating a ticket changes the persisted record
+Deleting a ticket removes the record
