@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Tickets</title>
+</head>
+<body>
+    <h1>Tickets</h1>
+
+    <h2>View tickets</h2>
+    <button id="view-all-btn">Show all</button>
+    <br><br>
+    Ticket ID: <input type="text" id="view-id">
+    <button id="view-one-btn">Show one</button>
+    <pre id="view-result"></pre>
+
+    <h2>Create ticket</h2>
+    Title: <input type="text" id="create-title"><br><br>
+    Description: <br>
+    <textarea id="create-description" rows="4" cols="40"></textarea><br><br>
+    Priority:
+    <select id="create-priority">
+        <option value="low">low</option>
+        <option value="medium">medium</option>
+        <option value="high">high</option>
+    </select>
+    <br><br>
+    Status:
+    <select id="create-status">
+        <option value="open">open</option>
+        <option value="in_progress">in_progress</option>
+        <option value="closed">closed</option>
+    </select>
+    <br><br>
+    <button id="create-btn">Create</button>
+    <pre id="create-result"></pre>
+
+    <h2>Update ticket</h2>
+    Enter ticket ID: <input type="text" id="update-id"><br><br>
+    New title: <input type="text" id="update-title"><br><br>
+    New description: <br>
+    <textarea id="update-description" rows="4" cols="40"></textarea><br><br>
+    New priority:
+    <select id="update-priority">
+        <option value="low">low</option>
+        <option value="medium">medium</option>
+        <option value="high">high</option>
+    </select>
+    <br><br>
+    New status:
+    <select id="update-status">
+        <option value="open">open</option>
+        <option value="in_progress">in_progress</option>
+        <option value="closed">closed</option>
+    </select>
+    <br><br>
+    <button id="update-btn">Update</button>
+    <pre id="update-result"></pre>
+
+    <h2>Delete ticket</h2>
+    Ticket ID: <input type="text" id="delete-id">
+    <button id="delete-btn">Delete</button>
+    <pre id="delete-result"></pre>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,6 +1,6 @@
 from fastapi import Depends, FastAPI, HTTPException, status
 from sqlalchemy.orm import Session
-
+from fastapi.middleware.cors import CORSMiddleware
 from . import models, schemas
 from app.database import Base, engine, get_db
 
@@ -8,6 +8,17 @@ Base.metadata.create_all(bind=engine)
 
 app = FastAPI(title="Ticket Management API")
 
+origins = [
+    "http://localhost:5500"
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,         
+    allow_methods=["*"],         
+    allow_headers=["*"],            
+)
 
 @app.get("/")
 def root():
@@ -38,7 +49,7 @@ def get_ticket_by_id(ticket_id: int, db: Session = Depends(get_db)):
     if ticket is None:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
-            detail="Task not found",
+            detail="Ticket not found",
         )
 
     return ticket
@@ -50,7 +61,7 @@ def update_ticket(ticket_id: int, ticket: schemas.TicketUpdate, db: Session = De
     if myticket is None:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
-            detail="Task not found",
+            detail="Ticket not found",
         )
 
     myticket.title = ticket.title

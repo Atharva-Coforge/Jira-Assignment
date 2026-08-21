@@ -23,11 +23,7 @@ Valid Statues are:
 
 
 Unit tests:
-- Check if the tickets are getting created properly. 
-- Check if the tickets are updated properly. 
-- Check if we can fetch all the tickets properly. 
-- Check if we can delete the tickets properly.
-- Check what happens when we pass missing values to create a ticket
+
 - Check what happens when you do not send ID to update tickets
 - Check what happens when you do not send ID to delete tickets
 
@@ -44,4 +40,8 @@ Deleting a ticket removes the record
 
 
 Current state of the code:
-- Get all tickets not working
+- Everything in the backend seems to work fine.
+- Test cases written for the requirements in the document.
+- Front end not implemented
+- Documentation 
+- Create a Mock Database for Testing

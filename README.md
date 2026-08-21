@@ -1,3 +1,5 @@
+## Running the Backend:
+
 Cloning the repository:
 
 https://github.com/Atharva-Coforge/Jira-Assignment.git
@@ -37,3 +39,29 @@ The API will be available at:
 Interactive API documentation is available at:
 
     http://127.0.0.1:8000/docs
+
+
+Status Codes:
+
+## Response Status Codes
+
+| Code | Status | Description |
+| :--- | :--- | :--- |
+| `200` | OK | Request succeeded |
+| `201` | Created | Resource created successfully | 
+| `404` | Not Found | Ticket does not exist |
+| `422` | Unprocessable Entity | Resource exists but not in proper format |
+| `500` | Internal Error | Server-side failure |
+
+
+
+## Endpoints:
+
+GET "/" - ROOT 
+POST "/tickets" - create_ticket
+GET "/tickets" - get_all_tickets
+GET "/tickets/{ticket_id}" - get_ticket_by_id
+PUT - /tickets/{ticket_id} - update_ticket
+DELETE - /ticket/{ticket_id} -  delete_ticket
+
+Requirements to run 
