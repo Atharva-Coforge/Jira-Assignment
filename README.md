@@ -86,3 +86,4 @@ httpx==0.24.1
 - Make the frontend attractive.
 - Write more unit tests (Currently I have only the minimum ones required).
 - Setting up a debugger.
+- We have a problem that if we enter an empty string in title it takes an empty string and creates a ticket with empty title and description, that should not happen.

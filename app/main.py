@@ -3,6 +3,7 @@ from sqlalchemy.orm import Session
 from fastapi.middleware.cors import CORSMiddleware
 from . import models, schemas
 from app.database import Base, engine, get_db
+from fastapi.responses import FileResponse
 
 Base.metadata.create_all(bind=engine)
 
@@ -22,7 +23,7 @@ app.add_middleware(
 
 @app.get("/")
 def root():
-    return {"message": "Ticket API Working"}
+    return {"message" : "Working fine!"}
 
 @app.post("/tickets", response_model=schemas.TicketResponse, status_code=status.HTTP_201_CREATED)
 def create_ticket(ticket: schemas.TicketCreate, db: Session = Depends(get_db)):
@@ -74,7 +75,7 @@ def update_ticket(ticket_id: int, ticket: schemas.TicketUpdate, db: Session = De
 
     return myticket
 
-@app.delete("/ticket/{ticket_id}", status_code=status.HTTP_204_NO_CONTENT)
+@app.delete("/tickets/{ticket_id}", status_code=status.HTTP_204_NO_CONTENT)
 def delete_ticket(ticket_id: int, db: Session = Depends(get_db)):
     ticket = db.query(models.Ticket).filter(models.Ticket.id == ticket_id).first()
 

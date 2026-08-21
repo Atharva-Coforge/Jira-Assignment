@@ -1,31 +1,37 @@
 from fastapi.testclient import TestClient
 from app.main import app
-from app.database import get_db
+from app.database import get_db, SessionLocal
 from sqlalchemy import create_engine, StaticPool
 from sqlalchemy.orm import sessionmaker, declarative_base
+from datetime import datetime
+
+from app.models import Ticket
 
 client = TestClient(app)
 
-# DATABASE_URL = "sqlite:///:memory:"
+def get_test_db():
+    test_db = SessionLocal()
 
-# engine = create_engine(
-#     DATABASE_URL,
-#     connect_args={"check_same_thread": False},
-#     poolclass = StaticPool,
-# )
+    test_ticket = Ticket(
+        title = "Test title",
+        description = "Test description",
+        priority = "LOW",
+        status = "CLOSED",
+        created_at = datetime.now()  
+    )
 
-# LocalSessionTesting = sessionmaker(
-#     autocommit=False,
-#     autoflush=False,
-#     bind=engine,
-# )
+    test_db.add(test_ticket)
+    test_db.commit()
+    test_db.refresh(test_ticket)
 
-# def override_get_db():
-#     database = TestingSessionLocal()
-#     yield database
-#     database.close()
+    try:
+        yield test_db
+    finally:
+        test_db.query(Ticket).delete()
+        test_db.commit()
+        test_db.close()
 
-# app.dependency_overrides[get_db] = override_get_db
+app.dependency_overrides[get_db] = get_test_db
 
 def test_root_returns_something():
     response = client.get("/")
@@ -62,8 +68,8 @@ def test_invalid_ticket_input():
     assert response.status_code == 422
 
 def test_getting_existing_ticket():
-    response = client.get("/tickets/99999")
-    assert response.status_code in [200, 404]
+    response = client.get("/tickets/1")
+    assert response.status_code == 200
 
 def test_get_non_existent_ticket():
     response = client.get("/tickets/10000")

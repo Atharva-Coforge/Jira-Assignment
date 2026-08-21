@@ -42,7 +42,12 @@ document.getElementById("view-one-btn").onclick = async function() {
 };
 
 document.getElementById("create-btn").onclick = async function() {
+
     var title = document.getElementById("create-title").value;
+    if (title.length === 0 ){
+        showMessage("create-result", "Could not create ticket because title is empty");
+    }
+
     var description = document.getElementById("create-description").value;
     var priority = document.getElementById("create-priority").value;
     var status = document.getElementById("create-status").value;
