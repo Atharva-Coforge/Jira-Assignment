@@ -1,22 +1,30 @@
 <!DOCTYPE html>
 <html>
 <head>
+
     <meta charset="UTF-8">
     <title>Tickets</title>
+
 </head>
 <body>
-    <h1>Tickets</h1>
+
+    <h1>Ticket Management System</h1>
 
     <h2>View tickets</h2>
     <button id="view-all-btn">Show all</button>
-    <br><br>
+
+    <br>
+    <br>
+
     Ticket ID: <input type="text" id="view-id">
     <button id="view-one-btn">Show one</button>
     <pre id="view-result"></pre>
 
     <h2>Create ticket</h2>
+
     Title: <input type="text" id="create-title"><br><br>
     Description: <br>
+
     <textarea id="create-description" rows="4" cols="40"></textarea><br><br>
     Priority:
     <select id="create-priority">
@@ -24,6 +32,7 @@
         <option value="medium">medium</option>
         <option value="high">high</option>
     </select>
+
     <br><br>
     Status:
     <select id="create-status">
@@ -31,6 +40,7 @@
         <option value="in_progress">in_progress</option>
         <option value="closed">closed</option>
     </select>
+
     <br><br>
     <button id="create-btn">Create</button>
     <pre id="create-result"></pre>
@@ -46,6 +56,7 @@
         <option value="medium">medium</option>
         <option value="high">high</option>
     </select>
+
     <br><br>
     New status:
     <select id="update-status">
@@ -53,6 +64,7 @@
         <option value="in_progress">in_progress</option>
         <option value="closed">closed</option>
     </select>
+    
     <br><br>
     <button id="update-btn">Update</button>
     <pre id="update-result"></pre>
