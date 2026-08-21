@@ -82,6 +82,7 @@ pytest==7.4.4
 httpx==0.24.1
 
 
-TODO:
-- Make the frontend attractive
-- Write more unit tests (Currently I have only the minimum ones required)
+## TODO:
+- Make the frontend attractive.
+- Write more unit tests (Currently I have only the minimum ones required).
+- Setting up a debugger.
